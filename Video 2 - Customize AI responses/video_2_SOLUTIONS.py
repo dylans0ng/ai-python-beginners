@@ -116,3 +116,31 @@ response = openai.chat.completions.create(
 print('----------------------------------------------')
 print('DYNAMIC PROMPT\n')
 print(response.choices[0].message.content)
+
+# Interactive Prompting Tool
+topic = input('What Python topic do you want to learn? ')
+audience = "someone learning programming for the first time"
+tone = input('What kind of tone is best for your learning (professional, friendly, humorous, etc)? ')
+format_instructions = """
+1. A one-sentence definition
+2. A simple Python code example
+3. A one-sentence explanation of the code
+"""
+
+user_prompt = f"""
+Explain {topic} to {audience}.
+
+Use a {tone} tone.
+
+Format your response with:
+{format_instructions}
+"""
+
+response = openai.chat.completions.create(
+    model='gpt-4.1-mini',
+    messages=[{'role': 'system', 'content': system_prompt}, {'role': 'user', 'content': user_prompt}]
+)
+
+print('----------------------------------------------')
+print('INTERACTIVE PROMPTING TOOL\n')
+print(response.choices[0].message.content)

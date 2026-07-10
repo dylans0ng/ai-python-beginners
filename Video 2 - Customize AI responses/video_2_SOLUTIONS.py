@@ -77,7 +77,7 @@ fruits = ["apple", "banana", "orange"]
 Code explanation:
 This list stores three fruit names in one variable.
 
-Now explain Python variables using the same beginner-friendly style and structure.
+Now explain Python lists using the same beginner-friendly style and structure.
 """
 
 response = openai.chat.completions.create(
